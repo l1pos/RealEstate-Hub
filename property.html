@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Деталі — Андрій Нерухомість</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="site-header small">
+        <div class="container header-inner">
+            <a class="brand" href="index.html">
+                <img src="images/website_icon.png" alt="logo" class="logo"> <span>Андрій Нерухомість</span>
+            </a>
+            <nav class="nav nav-inline">
+                <ul>
+                    <li><a href="index.html#rent">Оренда</a></li>
+                    <li><a href="index.html#sale">Продаж</a></li>
+                    <li><a href="index.html#contact">Контакти</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="section">
+        <div class="container" id="property-details"></div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div>© <span id="year2"></span> Андрій Нерухомість</div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+    <script>
+        document.getElementById('year2').textContent = new Date().getFullYear();
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = parseInt(urlParams.get('id'), 10);
+
+        const property = Array.isArray(properties) ? properties.find(p => p.id === id) : null;
+        const container = document.getElementById('property-details');
+
+        if (!property) {
+            container.innerHTML = '<p>Об\'єкт не знайдено. <a href="index.html">Повернутись на головну</a></p>';
+        } else {
+            // gallery markup for Swiper
+            const slides = property.images.map(src => `
+        <div class="swiper-slide"><img src="${src}" alt="${property.title}"></div>
+      `).join('');
+
+            container.innerHTML = `
+        <a class="back-link" href="index.html">⬅ Повернутися</a>
+        <h1>${property.title}</h1>
+        <div class="property-meta">
+          <div class="price">${property.price}</div>
+          <div class="type">${property.type === 'rent' ? 'Оренда' : 'Продаж'}</div>
+        </div>
+
+        <div class="gallery">
+          <div class="swiper main-swiper">
+            <div class="swiper-wrapper">
+              ${slides}
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+          <div class="swiper thumb-swiper">
+            <div class="swiper-wrapper">
+              ${property.images.map(src => `<div class="swiper-slide thumb"><img src="${src}" alt=""></div>`).join('')}
+            </div>
+          </div>
+        </div>
+
+        <div class="description">
+          <h3>Опис</h3>
+          <p>${property.description}</p>
+        </div>
+
+        <div class="similar">
+          <h3>Схожі об'єкти</h3>
+          <div id="similar-list" class="card-grid"></div>
+        </div>
+      `;
+
+            // Init Swiper (main + thumbs)
+            const thumb = new Swiper('.thumb-swiper', {
+                spaceBetween: 10,
+                slidesPerView: Math.min(property.images.length, 6),
+                freeMode: true,
+                watchSlidesProgress: true,
+            });
+
+            const main = new Swiper('.main-swiper', {
+                spaceBetween: 10,
+                navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+                thumbs: { swiper: thumb }
+            });
+
+            // render similar objects (same type, except current)
+            const similarList = document.getElementById('similar-list');
+            const similar = properties.filter(p => p.type === property.type && p.id !== property.id).slice(0, 4);
+            similar.forEach(p => {
+                const a = document.createElement('a');
+                a.className = 'card small';
+                a.href = `property.html?id=${p.id}`;
+                a.innerHTML = `
+          <div class="card-media"><img src="${p.images[0]}" alt="${p.title}"></div>
+          <div class="card-body"><h4>${p.title}</h4><div class="muted">${p.price}</div></div>
+        `;
+                similarList.appendChild(a);
+            });
+        }
+    </script>
+</body>
+
+</html>

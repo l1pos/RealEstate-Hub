@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Андрій Нерухомість — Головна</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Swiper (для слайдера на property) -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="images/website_icon.png" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html">
+          <img src="images/website_icon.png" alt="logo" class="logo" />
+          <span>Андрій Нерухомість</span>
+        </a>
+
+        <nav id="main-nav" class="nav">
+          <ul>
+            <li><a href="#home">Головна</a></li>
+            <li><a href="#about">Про мене</a></li>
+            <li><a href="#rent">Оренда</a></li>
+            <li><a href="#sale">Продаж</a></li>
+            <li><a href="#contact">Контакти</a></li>
+          </ul>
+        </nav>
+
+        <button id="burger" class="burger" aria-label="Відкрити меню">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section
+      id="home"
+      class="hero"
+      style="
+        background-image: linear-gradient(
+            120deg,
+            rgba(18, 10, 40, 0.65),
+            rgba(9, 18, 44, 0.65)
+          ),
+          url('images/hero-bg.jpg');
+      "
+    >
+      <div class="container hero-inner" data-aos="fade-up">
+        <div class="hero-left">
+          <h1>Знайдемо ваш ідеальний дім в Києві</h1>
+          <p>
+            Професійний ріелтор: перевірка документів, юридичний супровід і
+            вигідні умови.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#rent">Показати Оренду</a>
+            <a class="btn btn-ghost" href="#sale">Показати Продаж</a>
+          </div>
+        </div>
+
+        <div class="hero-right" data-aos="zoom-in">
+          <div class="profile-card">
+            <img class="profile-photo" src="images/andrew.webp" alt="Андрій" />
+            <div class="profile-info">
+              <h3>Андрій</h3>
+              <p>Ріелтор • Київ</p>
+              <a href="tel:+380982762858" class="contact-chip"
+                >📞 +38 (098) 276-2858</a
+              >
+              <a href="mailto:0982762858@ukr.net" class="contact-chip"
+                >✉ 0982762858@ukr.net</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container" data-aos="fade-right">
+        <h2>Про мене</h2>
+        <p class="lead">
+          Я допомагаю клієнтам купувати, продавати та орендувати нерухомість
+          швидко і безпечно.
+        </p>
+
+        <div class="features">
+          <div class="feature" data-aos="fade-up" data-aos-delay="50">
+            <h4>Юридичний супровід</h4>
+            <p>
+              Перевіряю документи, готую договори та супроводжую угоду до
+              закриття.
+            </p>
+          </div>
+          <div class="feature" data-aos="fade-up" data-aos-delay="150">
+            <h4>Переговори</h4>
+            <p>Веду переговори, щоб ви отримали найкращу ціну та умови.</p>
+          </div>
+          <div class="feature" data-aos="fade-up" data-aos-delay="250">
+            <h4>Оперативність</h4>
+            <p>
+              Швидкий підбір варіантів та організація переглядів під ваш графік.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RENT -->
+    <section id="rent" class="section section-dark">
+      <div class="container">
+        <h2 data-aos="fade-up">Оренда</h2>
+        <div
+          id="rent-list"
+          class="card-grid"
+          data-aos="fade-up"
+          data-aos-delay="80"
+        ></div>
+      </div>
+    </section>
+
+    <!-- SALE -->
+    <section id="sale" class="section">
+      <div class="container">
+        <h2 data-aos="fade-up">Продаж</h2>
+        <div
+          id="sale-list"
+          class="card-grid"
+          data-aos="fade-up"
+          data-aos-delay="80"
+        ></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section section-dark">
+      <div class="container" data-aos="fade-up">
+        <h2>Контакти</h2>
+        <p>
+          Телефон: <a href="tel:+380982762858">+38 (098) 276-2858</a> • Email:
+          <a href="mailto:0982762858@ukr.net">0982762858@ukr.net</a>
+        </p>
+        <p>Адреса: м. Київ</p>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>© <span id="year"></span> Андрій Нерухомість</div>
+        <div class="socials">
+          <a href="#" aria-label="Telegram">TG</a>
+          <a href="#" aria-label="Instagram">IG</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="data.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+    <script>
+      // Init AOS
+      AOS.init({ duration: 700, once: true });
+
+      // Year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Burger menu
+      const burger = document.getElementById("burger");
+      const nav = document.getElementById("main-nav");
+      burger.addEventListener("click", () => {
+        nav.classList.toggle("open");
+        burger.classList.toggle("open");
+      });
+
+      // Render properties
+      function makeCard(p) {
+        const a = document.createElement("a");
+        a.className = "card";
+        a.href = `property.html?id=${p.id}`;
+        a.innerHTML = `
+        <div class="card-media">
+          <img src="${p.images[0]}" alt="${p.title}" loading="lazy">
+          <div class="price-badge">${p.price}</div>
+        </div>
+        <div class="card-body">
+          <h3>${p.title}</h3>
+          <p class="muted">${p.type === "rent" ? "Оренда" : "Продаж"}</p>
+        </div>
+      `;
+        return a;
+      }
+
+      const rentList = document.getElementById("rent-list");
+      const saleList = document.getElementById("sale-list");
+
+      if (Array.isArray(properties)) {
+        properties.forEach((p) => {
+          const node = makeCard(p);
+          if (p.type === "rent") rentList.appendChild(node);
+          else if (p.type === "sale") saleList.appendChild(node);
+        });
+      } else {
+        console.error("properties is not defined or not an array");
+      }
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener("click", (e) => {
+          const id = link.getAttribute("href");
+          if (id.length > 1) {
+            e.preventDefault();
+            document
+              .querySelector(id)
+              .scrollIntoView({ behavior: "smooth", block: "start" });
+            // Close mobile nav if open
+            if (nav.classList.contains("open")) {
+              nav.classList.remove("open");
+              burger.classList.remove("open");
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
